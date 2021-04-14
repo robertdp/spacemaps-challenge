@@ -5,8 +5,8 @@ from spacemaps.stream import create_stream
 
 def main():
     args = create_parser().parse_args()
-    with create_stream(args.filename) as rows:
-        for result in run_analysis(rows, args.limit):
+    with create_stream(args.filename) as stream:
+        for result in run_analysis(stream, args.limit):
             print(result.id)
 
 
