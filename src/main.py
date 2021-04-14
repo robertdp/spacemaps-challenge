@@ -1,5 +1,5 @@
 from argparse import ArgumentParser
-from spacemaps.analysis import run_analysis
+from spacemaps.analyse import run_analysis
 from spacemaps.stream import create_stream
 
 
