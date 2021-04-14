@@ -2,15 +2,22 @@ from collections import deque
 
 
 def run_analysis(rows, limit):
-    initial = [next(rows) for _ in range(limit)]
-    initial.sort(key=lambda row: row.value)
-    q = deque(initial, limit)
+    initial = deque([], limit)
+    for _ in range(limit):
+        try:
+            initial.append(next(rows))
+        except StopIteration:
+            break
+    q = deque(sorted(initial, key=lambda row: row.value), limit)
     for row in rows:
         if row.value > q[0].value:
-            for index in range(1, limit):
-                if row.value < q[index].value:
-                    q.popleft()
-                    q.insert(index-1, row)
+            q.popleft()
+            for index in range(0, limit):
+                if index == limit - 1:
+                    q.append(row)
+                    break
+                elif row.value < q[index].value:
+                    q.insert(index, row)
                     break
     q.reverse()
     return q
