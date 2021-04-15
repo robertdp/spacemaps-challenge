@@ -10,13 +10,6 @@ There is minimal input validation or error recovery. The requirements are simple
 
 ## Instructions
 
-Checkout the project:
-
-```sh
-git clone https://github.com/robertdp/spacemaps-challenge.git
-cd spacemaps-challenge
-```
-
 Build the Docker image using the tag `spacemaps-challenge`:
 
 ```sh
