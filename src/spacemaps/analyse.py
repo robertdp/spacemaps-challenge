@@ -1,7 +1,8 @@
 from heapq import heappop, heappush, heappushpop
 
 
-# O(limit*log(limit) + rows*log(limit) + limit*log(limit)) => O((2*limit + rows)*log(limit))
+# O(limit*log(limit) + rows*log(limit) + limit*log(limit))
+# => O((2*limit + rows)*log(limit))
 def run_analysis(rows, limit):
     heap = []
     while len(heap) < limit:  # O(limit*log(limit))
