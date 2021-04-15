@@ -7,7 +7,7 @@ TEST_FILE = 'https://amp-spacemaps-technical-challenge.s3-ap-northeast-1.amazona
 class TestStream(unittest.TestCase):
     def test_to_row(self):
         a = stream.to_row(b'someid 44')
-        self.assertEqual(a.id == 'someid', a.value == 44)
+        self.assertTrue(a.id == 'someid', a.value == 44)
 
     def test_request_stream(self):
         with stream.create_stream(TEST_FILE) as stream_:
