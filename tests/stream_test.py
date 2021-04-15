@@ -12,7 +12,8 @@ class TestStream(unittest.TestCase):
     def test_request_stream(self):
         with stream.create_stream(TEST_FILE) as stream_:
             first = next(stream_)
-            self.assertTrue(first.id == '1a68e13af0f21d62bdd', first.value == 2000)
+            self.assertTrue(first.id == '1a68e13af0f21d62bdd',
+                            first.value == 2000)
 
     def test_mapped_iterator(self):
         input = [1, 2, 3, 4]

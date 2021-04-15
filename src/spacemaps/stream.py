@@ -9,6 +9,7 @@ def to_row(line):
     id, value = line.rsplit(b' ', 1)
     return Row(id.decode('ascii'), int(value))
 
+
 @contextmanager
 def create_stream(filename):
     # Streaming the request should allow for constant memory usage (mostly)
@@ -30,4 +31,3 @@ class MappedIterator:
 
     def __next__(self):
         return next(self.__iter__())
-
