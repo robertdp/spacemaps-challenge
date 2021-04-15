@@ -16,7 +16,7 @@ class TestAnalysis(unittest.TestCase):
             input[1]
         ]
         results = analyse.run_analysis(iter(input), 10)
-        self.assertListEqual(list(results), expected)
+        self.assertListEqual(sorted(results), sorted(expected))
 
     def test_correct_sorting(self):
         input = [
@@ -29,4 +29,4 @@ class TestAnalysis(unittest.TestCase):
             input[0]
         ]
         results = analyse.run_analysis(iter(input), 2)
-        self.assertListEqual(list(results), expected)
+        self.assertListEqual(sorted(results), sorted(expected))

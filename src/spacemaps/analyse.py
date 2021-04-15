@@ -1,23 +1,15 @@
-from collections import deque
+from heapq import heappop, heappush, heappushpop
 
 
-def run_analysis(rows, limit):
-    initial = deque([], limit)
-    for _ in range(limit):
+def run_analysis(rows, limit): # O(limit*log(limit) + rows*log(limit) + limit*log(limit)) => O((2*limit + rows)*log(limit))
+    heap = []
+    while len(heap) < limit: # O(limit*log(limit))
         try:
-            initial.append(next(rows))
+            row = next(rows)
+            heappush(heap, (row.value, row)) # O(log(limit))
         except StopIteration:
             break
-    q = deque(sorted(initial, key=lambda row: row.value), limit)
-    for row in rows:
-        if row.value > q[0].value:
-            q.popleft()
-            for index in range(0, limit):
-                if index == limit - 1:
-                    q.append(row)
-                    break
-                elif row.value < q[index].value:
-                    q.insert(index, row)
-                    break
-    q.reverse()
-    return q
+    for row in rows: # O(rows*log(limit))
+        if row.value > heap[0][0]:
+            heappushpop(heap, (row.value, row)) # O(log(limit))
+    return [heappop(heap)[1] for _ in range(len(heap))] # O(limit*log(limit))
