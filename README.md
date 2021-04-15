@@ -1,5 +1,15 @@
 # spacemaps-challenge
 
+This project is split into 3 small sections:
+
+1. Command line parsing
+2. Request streaming (over HTTP with gzip)
+3. Results collection (using a size-limited priority queue)
+
+There is minimal input validation or error recovery. The requirements are simple enough that these can be skipped here.
+
+## Instructions
+
 Checkout the project:
 
 ```sh
