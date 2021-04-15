@@ -1,4 +1,6 @@
 tag = spacemaps-challenge
+source = https://amp-spacemaps-technical-challenge.s3-ap-northeast-1.amazonaws.com/spacemaps_technical_challenge.txt
+results = 30
 
 .PHONY: build
 build:
@@ -6,7 +8,7 @@ build:
 
 .PHONY: run
 run:
-	docker run --rm $(tag) https://amp-spacemaps-technical-challenge.s3-ap-northeast-1.amazonaws.com/spacemaps_technical_challenge.txt 30
+	docker run --rm $(tag) $(source) $(results)
 
 .PHONY: test
 test:
