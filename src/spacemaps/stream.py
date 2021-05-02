@@ -13,11 +13,11 @@ def to_row(line):
 @contextmanager
 def create_stream(filename):
     # Streaming the request should allow for constant memory usage (mostly)
-    with get(filename, stream=True, headers={'Accept-Encoding': 'gzip'}) as req:
+    with get(filename, stream=True, headers={'Accept-Encoding': 'gzip'}) as response:
         # Different content encodings can be used based on the requirements, and hooked into the stream as an extra
         # transformation step. Or handled by libraries, as is the case here.
-        req.raw.decode_content = True
-        yield MappedIterator(req.iter_lines(), to_row)
+        response.raw.decode_content = True
+        yield MappedIterator(response.iter_lines(), to_row)
 
 
 class MappedIterator:
